@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXO — The network connecting what comes next</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200..600&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;background:#05070A}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+*{box-sizing:border-box}
+body{margin:0;background:#05070A;color:#F5F7FA;font-family:'Sora',system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#F5F7FA;text-decoration:none}
+a:hover{color:#A8E6FF}
+:focus-visible{outline:2px solid #A8E6FF;outline-offset:3px}
+::placeholder{color:#8A93A0}
+::selection{background:#3EA8FF;color:#05070A}
+</style>
+</helmet>
+
+<nav aria-label="Main" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:max-content;max-width:calc(100% - 32px);display:flex;align-items:center;gap:28px;padding:8px 8px 8px 22px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%)">
+  <a href="#top" aria-label="NEXO, home" style="font-size:15px;font-weight:500;letter-spacing:0.28em;color:#F5F7FA">NEXO</a>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;gap:24px;font-size:14px">
+      <a href="#red" style="color:#8A93A0" style-hover="color:#F5F7FA">Network</a>
+      <a href="#tecnologia" style="color:#8A93A0" style-hover="color:#F5F7FA">Technology</a>
+      <a href="#planes" style="color:#8A93A0" style-hover="color:#F5F7FA">Plans</a>
+      <a href="#empresas" style="color:#8A93A0" style-hover="color:#F5F7FA">Business</a>
+    </div>
+  </sc-if>
+  <a href="#sumarme" style="margin-left:auto;background:#F5F7FA;color:#05070A;font-size:14px;font-weight:400;padding:9px 18px;border-radius:999px;transition:opacity .2s" style-hover="opacity:0.88;color:#05070A">Join</a>
+</nav>
+
+<canvas ref="{{ starsRef }}" aria-hidden="true" style="position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:0;pointer-events:none"></canvas>
+<main id="top" style="position:relative;z-index:1">
+  <section aria-labelledby="hero-title" style="position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:max(38vh,250px) 24px 80px">
+    <div ref="{{ videoWrapRef }}" style="position:absolute;left:0;right:0;top:0;height:45%;min-height:260px;z-index:1;will-change:transform,opacity;-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent 100%);mask-image:linear-gradient(to bottom,#000 30%,transparent 100%)">
+      <video ref="{{ videoRef }}" autoPlay="autoplay" muted="muted" loop="loop" playsInline="playsinline" preload="metadata" poster="uploads/nexo-poster.jpg" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block">
+        <source src="uploads/nexo-loop-1080.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:900px">
+      <div data-reveal="0" style="display:flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;color:#F5F7FA">
+        <span aria-hidden="true" style="width:6px;height:6px;border-radius:50%;background:#A8E6FF;box-shadow:0 0 10px 2px rgba(168,230,255,0.7)"></span>
+        <span>Early access from March 2027</span>
+      </div>
+      <h1 id="hero-title" data-reveal="1" style="margin:28px 0 0;font-size:clamp(40px,6.2vw,72px);line-height:1.04;font-weight:300;letter-spacing:-0.03em">
+        <span style="display:block;color:#F5F7FA">The network connecting</span>
+        <span style="display:block;background:linear-gradient(180deg,#F5F7FA 10%,#8A93A0 95%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:0.06em">what comes next.</span>
+      </h1>
+      <p data-reveal="2" style="margin:24px 0 0;max-width:560px;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#8A93A0;text-wrap:pretty">Nexo is the first satellite mesh with AI routing: one-millisecond latency, coverage in every corner of the planet, and a network that learns to get faster every day.</p>
+      <div data-reveal="3" style="margin-top:36px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <a href="#sumarme" style="background:#F5F7FA;color:#05070A;font-size:15px;font-weight:400;padding:15px 26px;border-radius:999px;transition:transform .2s,opacity .2s" style-hover="transform:translateY(-1px);opacity:0.9;color:#05070A">Join the waitlist</a>
+        <a href="#red" style="color:#F5F7FA;font-size:15px;font-weight:400;padding:14px 25px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.02);transition:background .2s,border-color .2s" style-hover="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.24);color:#F5F7FA">See the live network</a>
+      </div>
+    </div>
+  </section>
+
+  <section ref="{{ statsRef }}" aria-label="The network in numbers" style="border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08)">
+    <dl style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))">
+      <div style="padding:36px 8px;display:flex;flex-direction:column;gap:8px">
+        <dt style="order:2;font-size:14px;color:#8A93A0">average latency</dt>
+        <dd style="margin:0;font-size:clamp(34px,4vw,48px);font-weight:300;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:#F5F7FA"><span data-count="0.8" data-dec="1">0.8</span><span style="font-size:0.5em;margin-left:6px">ms</span></dd>
+      </div>
+      <div style="padding:36px 8px;display:flex;flex-direction:column;gap:8px">
+        <dt style="order:2;font-size:14px;color:#8A93A0">nodes in orbit</dt>
+        <dd style="margin:0;font-size:clamp(34px,4vw,48px);font-weight:300;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:#F5F7FA"><span data-count="4200" data-dec="0">4,200</span></dd>
+      </div>
+      <div style="padding:36px 8px;display:flex;flex-direction:column;gap:8px">
+        <dt style="order:2;font-size:14px;color:#8A93A0">countries</dt>
+        <dd style="margin:0;font-size:clamp(34px,4vw,48px);font-weight:300;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:#F5F7FA"><span data-count="190" data-dec="0">190</span></dd>
+      </div>
+      <div style="padding:36px 8px;display:flex;flex-direction:column;gap:8px">
+        <dt style="order:2;font-size:14px;color:#8A93A0">uptime</dt>
+        <dd style="margin:0;font-size:clamp(34px,4vw,48px);font-weight:300;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:#F5F7FA"><span data-count="99.999" data-dec="3">99.999</span><span style="font-size:0.5em;margin-left:6px">%</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="red" aria-labelledby="red-title" style="scroll-margin-top:24px;padding:clamp(80px,11vw,150px) 0;overflow-x:clip">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <p data-reveal="0" style="margin:0;font-size:13px;letter-spacing:0.16em;color:#A8E6FF;font-weight:400">LIVE NETWORK</p>
+      <h2 id="red-title" data-reveal="1" style="margin:16px 0 0;font-size:clamp(32px,4.4vw,52px);font-weight:300;letter-spacing:-0.03em;line-height:1.08;text-wrap:balance">Spin it. Explore it. It’s all yours.</h2>
+      <p data-reveal="2" style="margin:20px 0 0;max-width:600px;font-size:17px;line-height:1.6;color:#8A93A0;text-wrap:pretty">Every dot is a Nexo node; every arc, data traveling right now. Drag to spin the planet and tap a city to see its latency.</p>
+    </div>
+    <div style="position:relative;margin:48px auto 0;width:100%;max-width:760px">
+      <div aria-hidden="true" style="position:absolute;inset:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(62,168,255,0.16),rgba(62,168,255,0));pointer-events:none"></div>
+      <div ref="{{ globeRef }}" style="position:relative;width:100%;aspect-ratio:1 / 1;touch-action:pan-y">
+        <sc-if value="{{ globeLoading }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:#8A93A0">Loading the network…</div>
+        </sc-if>
+        <sc-if value="{{ webglFailed }}" hint-placeholder-val="{{ false }}">
+          <img src="uploads/nexo-poster.jpg" alt="View of the Nexo satellite network around the planet" style="position:absolute;inset:6%;width:88%;height:88%;object-fit:cover;border-radius:50%">
+        </sc-if>
+      </div>
+      <div ref="{{ tooltipRef }}" role="status" aria-live="polite" style="position:absolute;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .18s;white-space:nowrap;padding:10px 14px;border-radius:12px;font-size:13px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(5,7,10,0.6)"><span ref="{{ ttNameRef }}" style="color:#F5F7FA;font-weight:400"></span><span ref="{{ ttMetaRef }}" style="color:#8A93A0"></span></div>
+    </div>
+    <div style="margin-top:28px;padding:0 24px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px">
+      <span id="globe-hint" style="font-size:13px;color:#8A93A0;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">Drag to rotate</span>
+      <button type="button" onClick="{{ recenter }}" style="font:inherit;font-size:13px;font-weight:400;color:#F5F7FA;cursor:pointer;padding:9px 16px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;gap:8px;transition:background .2s" style-hover="background:rgba(255,255,255,0.06)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+        Recenter
+      </button>
+    </div>
+  </section>
+
+  <section id="tecnologia" aria-labelledby="tec-title" style="scroll-margin-top:24px;padding:clamp(80px,10vw,140px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <h2 id="tec-title" data-reveal="0" style="margin:0 0 40px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#A8E6FF;font-weight:400">Technology</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+        <div data-reveal="0">
+          <a href="#como" onMouseEnter="{{ fe0 }}" onMouseLeave="{{ fl }}" onFocus="{{ fe0 }}" onBlur="{{ fl }}" style="display:flex;flex-direction:column;height:100%;padding:32px;border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s;color:#F5F7FA" style-hover="transform:translateY(-4px);border-color:rgba(255,255,255,0.14);box-shadow:0 20px 50px rgba(5,7,10,0.6),0 0 40px rgba(62,168,255,0.08);color:#F5F7FA">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5"></circle><line x1="12" y1="13.5" x2="12" y2="9.5"></line><line x1="10" y1="3" x2="14" y2="3"></line></svg>
+            <h3 style="margin:28px 0 0;font-size:20px;font-weight:400;letter-spacing:-0.01em">0.8 ms latency</h3>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#8A93A0;text-wrap:pretty">Faster than a blink: video calls, gaming and remote surgery with no wait.</p>
+            <span aria-hidden="true" style="margin-top:auto;padding-top:28px;color:#A8E6FF;font-size:18px;opacity:{{ a0.o }};transform:{{ a0.t }};transition:opacity .3s,transform .3s">→</span>
+          </a>
+        </div>
+        <div data-reveal="1">
+          <a href="#como" onMouseEnter="{{ fe1 }}" onMouseLeave="{{ fl }}" onFocus="{{ fe1 }}" onBlur="{{ fl }}" style="display:flex;flex-direction:column;height:100%;padding:32px;border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s;color:#F5F7FA" style-hover="transform:translateY(-4px);border-color:rgba(255,255,255,0.14);box-shadow:0 20px 50px rgba(5,7,10,0.6),0 0 40px rgba(62,168,255,0.08);color:#F5F7FA">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="1.4" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><ellipse cx="12" cy="12" rx="10.5" ry="4.2" transform="rotate(-24 12 12)"></ellipse></svg>
+            <h3 style="margin:28px 0 0;font-size:20px;font-weight:400;letter-spacing:-0.01em">Low-orbit mesh</h3>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#8A93A0;text-wrap:pretty">4,200 satellites that talk to each other and reach where fiber can’t.</p>
+            <span aria-hidden="true" style="margin-top:auto;padding-top:28px;color:#A8E6FF;font-size:18px;opacity:{{ a1.o }};transform:{{ a1.t }};transition:opacity .3s,transform .3s">→</span>
+          </a>
+        </div>
+        <div data-reveal="2">
+          <a href="#como" onMouseEnter="{{ fe2 }}" onMouseLeave="{{ fl }}" onFocus="{{ fe2 }}" onBlur="{{ fl }}" style="display:flex;flex-direction:column;height:100%;padding:32px;border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s;color:#F5F7FA" style-hover="transform:translateY(-4px);border-color:rgba(255,255,255,0.14);box-shadow:0 20px 50px rgba(5,7,10,0.6),0 0 40px rgba(62,168,255,0.08);color:#F5F7FA">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true"><circle cx="5" cy="6" r="2.2"></circle><circle cx="19" cy="6" r="2.2"></circle><circle cx="12" cy="18.5" r="2.2"></circle><line x1="7.2" y1="6" x2="16.8" y2="6"></line><line x1="6.2" y1="7.9" x2="10.8" y2="16.6"></line><line x1="17.8" y1="7.9" x2="13.2" y2="16.6"></line></svg>
+            <h3 style="margin:28px 0 0;font-size:20px;font-weight:400;letter-spacing:-0.01em">AI routing</h3>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#8A93A0;text-wrap:pretty">The network predicts congestion and reroutes traffic before you notice.</p>
+            <span aria-hidden="true" style="margin-top:auto;padding-top:28px;color:#A8E6FF;font-size:18px;opacity:{{ a2.o }};transform:{{ a2.t }};transition:opacity .3s,transform .3s">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como" ref="{{ stepsRef }}" aria-labelledby="como-title" style="scroll-margin-top:24px;padding:clamp(80px,10vw,140px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <h2 id="como-title" data-reveal="0" style="margin:0;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#A8E6FF;font-weight:400">How it works</h2>
+      <ol style="list-style:none;margin:56px 0 0;padding:0;position:relative;display:grid;grid-template-columns:{{ stepsCols }};gap:{{ stepsGap }}">
+        <li aria-hidden="true" style="position:absolute;left:{{ ln.left }};right:{{ ln.right }};top:24px;bottom:{{ ln.bottom }};width:{{ ln.w }};height:{{ ln.h }};background:rgba(255,255,255,0.08)">
+          <div ref="{{ fillRef }}" style="position:absolute;left:0;top:0;width:0;height:0;background:linear-gradient(90deg,#3EA8FF,#A8E6FF)"></div>
+          <div ref="{{ pulseRef }}" style="position:absolute;left:0;top:0;width:10px;height:10px;border-radius:50%;background:#A8E6FF;transform:translate(-50%,-50%);box-shadow:0 0 12px 3px rgba(168,230,255,0.7),0 0 36px 10px rgba(62,168,255,0.35)"></div>
+        </li>
+        <li data-reveal="0" style="position:relative;display:flex;flex-direction:{{ stepDir }};align-items:{{ stepAlign }};text-align:{{ stepText }};gap:20px">
+          <div ref="{{ dot0 }}" style="flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#05070A;border:1px solid rgba(255,255,255,0.12);color:#8A93A0;font-size:14px;font-variant-numeric:tabular-nums;transition:border-color .4s,color .4s,box-shadow .4s">01</div>
+          <div style="max-width:320px"><h3 style="margin:0;font-size:20px;font-weight:400;letter-spacing:-0.01em;padding-top:12px">Your antenna connects</h3><p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#8A93A0;text-wrap:pretty">Installs in minutes and finds the mesh on its own.</p></div>
+        </li>
+        <li data-reveal="1" style="position:relative;display:flex;flex-direction:{{ stepDir }};align-items:{{ stepAlign }};text-align:{{ stepText }};gap:20px">
+          <div ref="{{ dot1 }}" style="flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#05070A;border:1px solid rgba(255,255,255,0.12);color:#8A93A0;font-size:14px;font-variant-numeric:tabular-nums;transition:border-color .4s,color .4s,box-shadow .4s">02</div>
+          <div style="max-width:320px"><h3 style="margin:0;font-size:20px;font-weight:400;letter-spacing:-0.01em;padding-top:12px">AI picks the route</h3><p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#8A93A0;text-wrap:pretty">Out of thousands of possible paths, it takes the fastest one in real time.</p></div>
+        </li>
+        <li data-reveal="2" style="position:relative;display:flex;flex-direction:{{ stepDir }};align-items:{{ stepAlign }};text-align:{{ stepText }};gap:20px">
+          <div ref="{{ dot2 }}" style="flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#05070A;border:1px solid rgba(255,255,255,0.12);color:#8A93A0;font-size:14px;font-variant-numeric:tabular-nums;transition:border-color .4s,color .4s,box-shadow .4s">03</div>
+          <div style="max-width:320px"><h3 style="margin:0;font-size:20px;font-weight:400;letter-spacing:-0.01em;padding-top:12px">You get there first</h3><p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#8A93A0;text-wrap:pretty">Your data travels through space and lands exactly where it needs to be.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="test-title" style="padding:clamp(80px,10vw,140px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <h2 id="test-title" data-reveal="0" style="margin:0 0 40px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#A8E6FF;font-weight:400;text-align:center">Testimonials</h2>
+      <div data-reveal="1" aria-roledescription="carousel" style="max-width:880px;margin:0 auto">
+        <div onMouseEnter="{{ pauseCarousel }}" onMouseLeave="{{ resumeCarousel }}" onTouchStart="{{ touchStart }}" onTouchEnd="{{ touchEnd }}" style="overflow:hidden;border-radius:24px">
+          <div style="display:flex;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform:{{ trackTransform }}">
+            <figure aria-label="1 of 3" style="margin:0;flex:0 0 100%;padding:0 2px">
+              <div style="padding:clamp(28px,5vw,56px);border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+                <blockquote style="margin:0;font-size:clamp(21px,2.6vw,30px);line-height:1.38;letter-spacing:-0.01em;text-wrap:pretty">“We run HD telehealth consultations from a rural hospital in Jujuy. It used to be unthinkable.”</blockquote>
+                <figcaption style="margin-top:32px;font-size:15px"><span style="color:#F5F7FA;font-weight:400">Dr. Lucía Ferreyra</span><span style="color:#8A93A0">, medical director</span></figcaption>
+              </div>
+            </figure>
+            <figure aria-label="2 of 3" style="margin:0;flex:0 0 100%;padding:0 2px">
+              <div style="padding:clamp(28px,5vw,56px);border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+                <blockquote style="margin:0;font-size:clamp(21px,2.6vw,30px);line-height:1.38;letter-spacing:-0.01em;text-wrap:pretty">“We play online tournaments from a ranch in Patagonia without a single lag spike.”</blockquote>
+                <figcaption style="margin-top:32px;font-size:15px"><span style="color:#F5F7FA;font-weight:400">Tomás Rivero</span><span style="color:#8A93A0">, pro gamer</span></figcaption>
+              </div>
+            </figure>
+            <figure aria-label="3 of 3" style="margin:0;flex:0 0 100%;padding:0 2px">
+              <div style="padding:clamp(28px,5vw,56px);border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+                <blockquote style="margin:0;font-size:clamp(21px,2.6vw,30px);line-height:1.38;letter-spacing:-0.01em;text-wrap:pretty">“We moved our entire logistics operation to Nexo in one week.”</blockquote>
+                <figcaption style="margin-top:32px;font-size:15px"><span style="color:#F5F7FA;font-weight:400">Carla Méndez</span><span style="color:#8A93A0">, COO at Ruta Sur</span></figcaption>
+              </div>
+            </figure>
+          </div>
+        </div>
+        <div style="margin-top:20px;display:flex;justify-content:center;gap:6px">
+          <button type="button" onClick="{{ go0 }}" aria-label="View testimonial 1" aria-current="{{ d0.cur }}" style="background:transparent;border:none;padding:10px 2px;cursor:pointer"><span style="display:block;height:6px;border-radius:999px;width:{{ d0.w }};background:{{ d0.bg }};transition:width .35s,background .35s"></span></button>
+          <button type="button" onClick="{{ go1 }}" aria-label="View testimonial 2" aria-current="{{ d1.cur }}" style="background:transparent;border:none;padding:10px 2px;cursor:pointer"><span style="display:block;height:6px;border-radius:999px;width:{{ d1.w }};background:{{ d1.bg }};transition:width .35s,background .35s"></span></button>
+          <button type="button" onClick="{{ go2 }}" aria-label="View testimonial 3" aria-current="{{ d2.cur }}" style="background:transparent;border:none;padding:10px 2px;cursor:pointer"><span style="display:block;height:6px;border-radius:999px;width:{{ d2.w }};background:{{ d2.bg }};transition:width .35s,background .35s"></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planes" aria-labelledby="planes-title" style="scroll-margin-top:24px;padding:clamp(80px,10vw,140px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <h2 id="planes-title" data-reveal="0" style="margin:0 0 40px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#A8E6FF;font-weight:400">Plans</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:stretch">
+        <div data-reveal="0">
+          <article style="height:100%;display:flex;flex-direction:column;padding:32px;border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <h3 style="margin:0;font-size:16px;font-weight:400;color:#8A93A0">Home</h3>
+            <p style="margin:20px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font-size:15px;color:#8A93A0">USD</span><span style="font-size:48px;font-weight:300;letter-spacing:-0.03em">39</span><span style="font-size:15px;color:#8A93A0">/mo</span></p>
+            <ul style="list-style:none;margin:28px 0 36px;padding:0;display:flex;flex-direction:column;gap:14px;font-size:15px">
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>500 Mbps</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>Antenna included</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>24/7 support</li>
+            </ul>
+            <a href="#sumarme" style="margin-top:auto;text-align:center;font-size:15px;font-weight:400;padding:14px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);color:#F5F7FA;transition:background .2s" style-hover="background:rgba(255,255,255,0.06);color:#F5F7FA">Choose Home</a>
+          </article>
+        </div>
+        <div data-reveal="1">
+          <article style="position:relative;height:100%;display:flex;flex-direction:column;padding:32px;border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(62,168,255,0.55);box-shadow:0 0 0 1px rgba(62,168,255,0.15),0 0 60px rgba(62,168,255,0.18),inset 0 0 40px rgba(62,168,255,0.06)">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <h3 style="margin:0;font-size:16px;font-weight:400;color:#A8E6FF">Pro</h3>
+              <span style="font-size:12px;font-weight:400;padding:5px 11px;border-radius:999px;background:rgba(62,168,255,0.14);border:1px solid rgba(62,168,255,0.4);color:#A8E6FF">Most popular</span>
+            </div>
+            <p style="margin:20px 0 0;display:flex;align-items:baseline;gap:6px"><span style="font-size:15px;color:#8A93A0">USD</span><span style="font-size:48px;font-weight:300;letter-spacing:-0.03em">89</span><span style="font-size:15px;color:#8A93A0">/mo</span></p>
+            <ul style="list-style:none;margin:28px 0 36px;padding:0;display:flex;flex-direction:column;gap:14px;font-size:15px">
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>2 Gbps</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>AI route priority</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>Static IP</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>Multi-device</li>
+            </ul>
+            <a href="#sumarme" style="margin-top:auto;text-align:center;font-size:15px;font-weight:400;padding:14px;border-radius:999px;background:#F5F7FA;color:#05070A;transition:opacity .2s" style-hover="opacity:0.9;color:#05070A">Choose Pro</a>
+          </article>
+        </div>
+        <div data-reveal="2">
+          <article id="empresas" style="scroll-margin-top:96px;height:100%;display:flex;flex-direction:column;padding:32px;border-radius:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <h3 style="margin:0;font-size:16px;font-weight:400;color:#8A93A0">Business</h3>
+            <p style="margin:20px 0 0;font-size:48px;font-weight:300;letter-spacing:-0.03em;line-height:1.2">Custom</p>
+            <ul style="list-style:none;margin:28px 0 36px;padding:0;display:flex;flex-direction:column;gap:14px;font-size:15px">
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>99.999% SLA</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>Dedicated private network</li>
+              <li style="display:flex;gap:12px;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E6FF" strokeWidth="2" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"></polyline></svg>Account manager</li>
+            </ul>
+            <a href="#sumarme" style="margin-top:auto;text-align:center;font-size:15px;font-weight:400;padding:14px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);color:#F5F7FA;transition:background .2s" style-hover="background:rgba(255,255,255,0.06);color:#F5F7FA">Talk to sales</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sumarme" aria-labelledby="cta-title" style="scroll-margin-top:24px;position:relative;overflow:hidden;padding:clamp(100px,12vw,170px) 24px;text-align:center">
+    <div aria-hidden="true" style="position:absolute;left:50%;top:50%;width:min(1000px,140vw);height:640px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(62,168,255,0.30),rgba(62,168,255,0.08) 55%,rgba(62,168,255,0));pointer-events:none"></div>
+    <div style="position:relative;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center">
+      <h2 id="cta-title" data-reveal="0" style="margin:0;font-size:clamp(34px,5vw,60px);font-weight:300;letter-spacing:-0.03em;line-height:1.06;text-wrap:balance">The future won’t wait. Neither will your connection.</h2>
+      <div data-reveal="1" style="margin-top:40px;width:100%;max-width:480px">
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-wrap:wrap;gap:8px;padding:6px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)">
+            <input type="email" required="" name="email" aria-label="Your email" placeholder="you@email.com" autoComplete="email" style="flex:1 1 180px;min-width:0;font:inherit;font-size:15px;color:#F5F7FA;background:transparent;border:none;padding:12px 16px;border-radius:999px;outline-offset:0">
+            <button type="submit" style="flex:none;font:inherit;font-size:15px;font-weight:400;background:#F5F7FA;color:#05070A;border:none;padding:12px 24px;border-radius:999px;cursor:pointer;transition:opacity .2s" style-hover="opacity:0.9">Join</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <p role="status" style="margin:0;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:15px;color:#F5F7FA"><span aria-hidden="true" style="width:6px;height:6px;border-radius:50%;background:#A8E6FF;box-shadow:0 0 10px 2px rgba(168,230,255,0.7)"></span>Done, you’re on the list.</p>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="position:relative;z-index:1;border-top:1px solid rgba(255,255,255,0.08);padding:64px 0 40px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:40px">
+    <div><a href="#top" style="font-size:15px;font-weight:500;letter-spacing:0.28em">NEXO</a></div>
+    <nav aria-label="Product"><h3 style="margin:0 0 16px;font-size:13px;font-weight:400;color:#F5F7FA">Product</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px"><li><a href="#red" style="color:#8A93A0" style-hover="color:#F5F7FA">Network</a></li><li><a href="#tecnologia" style="color:#8A93A0" style-hover="color:#F5F7FA">Technology</a></li><li><a href="#planes" style="color:#8A93A0" style-hover="color:#F5F7FA">Plans</a></li></ul></nav>
+    <nav aria-label="Company"><h3 style="margin:0 0 16px;font-size:13px;font-weight:400;color:#F5F7FA">Company</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px"><li><a href="#" style="color:#8A93A0" style-hover="color:#F5F7FA">About Nexo</a></li><li><a href="#" style="color:#8A93A0" style-hover="color:#F5F7FA">Press</a></li><li><a href="#empresas" style="color:#8A93A0" style-hover="color:#F5F7FA">Business</a></li></ul></nav>
+    <nav aria-label="Resources"><h3 style="margin:0 0 16px;font-size:13px;font-weight:400;color:#F5F7FA">Resources</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px"><li><a href="#" style="color:#8A93A0" style-hover="color:#F5F7FA">Network status</a></li><li><a href="#" style="color:#8A93A0" style-hover="color:#F5F7FA">Documentation</a></li><li><a href="#" style="color:#8A93A0" style-hover="color:#F5F7FA">Support</a></li></ul></nav>
+  </div>
+  <p style="max-width:1200px;margin:56px auto 0;padding:0 24px;font-size:13px;color:#8A93A0">© 2026 Nexo — fictional portfolio project</p>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;autoRotate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Globe&quot;},&quot;rotateSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.5,&quot;min&quot;:0.1,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Globe&quot;},&quot;pulses&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Globe&quot;}}">
+class Component extends DCLogic {
+  state = { wide: typeof window === 'undefined' ? true : window.innerWidth >= 768, slide: 0, hoverFeat: -1, submitted: false, webglFailed: false, globeReady: false };
+  starsRef = React.createRef(); videoWrapRef = React.createRef(); videoRef = React.createRef(); statsRef = React.createRef();
+  globeRef = React.createRef(); tooltipRef = React.createRef(); ttNameRef = React.createRef(); ttMetaRef = React.createRef();
+  stepsRef = React.createRef(); fillRef = React.createRef(); pulseRef = React.createRef();
+  dot0 = React.createRef(); dot1 = React.createRef(); dot2 = React.createRef();
+  fe = [0, 1, 2].map(i => () => this.setState({ hoverFeat: i }));
+  fl = () => this.setState({ hoverFeat: -1 });
+  go = [0, 1, 2].map(i => () => { this.setState({ slide: i }); this.startCarousel(); });
+
+  componentDidMount() {
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const v = this.videoRef.current;
+    if (v) {
+      v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+      v.setAttribute('muted', ''); v.setAttribute('loop', ''); v.setAttribute('playsinline', '');
+      v.addEventListener('ended', () => { if (!this.reduced) { v.currentTime = 0; v.play().catch(() => {}); } });
+      v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
+      if (this.reduced) { v.removeAttribute('autoplay'); v.pause(); v.load(); }
+      else { try { const p = v.play(); p && p.catch(() => {}); } catch (e) {} }
+    }
+    this.onResize = () => {
+      const wide = this.isWide();
+      if (wide !== this.lastWide) { this.lastWide = wide; this.forceUpdate(); }
+      this.drawStars(); this.onScroll();
+      this.globeResize && this.globeResize();
+    };
+    this.onScroll = () => { if (!this.sRaf) this.sRaf = requestAnimationFrame(() => { this.sRaf = 0; this.scrollFx(); }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onResize();
+    this.mq = window.matchMedia('(min-width: 768px)');
+    this.mqH = () => this.onResize();
+    this.mq.addEventListener('change', this.mqH);
+    this.rro = new ResizeObserver(() => this.onResize());
+    this.rro.observe(document.documentElement);
+    window.addEventListener('load', this.onResize);
+    this.rTimers = [100, 500, 1500].map(t => setTimeout(this.onResize, t));
+    this.setupReveals(); this.setupCount(); this.startCarousel();
+    this.initGlobe();
+  }
+  isWide() { return window.matchMedia('(min-width: 768px)').matches; }
+  componentDidUpdate() { this.scrollFx(); }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    this.mq && this.mq.removeEventListener('change', this.mqH); this.rro && this.rro.disconnect(); window.removeEventListener('load', this.onResize); (this.rTimers || []).forEach(clearTimeout);
+    clearInterval(this.cTimer); clearTimeout(this.resumeT);
+    cancelAnimationFrame(this.gRaf); this.running = false;
+    this.io && this.io.disconnect(); this.gio && this.gio.disconnect(); this.ro && this.ro.disconnect();
+    this.renderer && this.renderer.dispose();
+  }
+
+  drawStars() {
+    const c = this.starsRef.current; if (!c) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    const ctx = c.getContext('2d'); ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const n = Math.round(w * h / 4200);
+    for (let i = 0; i < n; i++) {
+      const x = rnd() * w, y = rnd() * h, r = rnd() * 0.9 + 0.2, a = rnd() * 0.55 + 0.1;
+      ctx.fillStyle = rnd() > 0.85 ? `rgba(168,230,255,${a})` : `rgba(245,247,250,${a})`;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  scrollFx() {
+    const y = window.scrollY, vh = window.innerHeight;
+    if (!this.reduced) {
+      const vw = this.videoWrapRef.current;
+      if (vw && y < vh * 1.5) { vw.style.transform = `translate3d(0,${y * 0.3}px,0)`; vw.style.opacity = Math.max(0, 1 - y / (vh * 0.7)); }
+    }
+    const sec = this.stepsRef.current, fill = this.fillRef.current, pulse = this.pulseRef.current;
+    if (!sec || !fill || !pulse) return;
+    const r = sec.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (vh * 0.8 - r.top) / (vh * 0.6)));
+    const pct = (p * 100).toFixed(2) + '%';
+    if (this.isWide()) { fill.style.width = pct; fill.style.height = '100%'; pulse.style.left = pct; pulse.style.top = '50%'; fill.style.background = 'linear-gradient(90deg,#3EA8FF,#A8E6FF)'; }
+    else { fill.style.height = pct; fill.style.width = '100%'; pulse.style.top = pct; pulse.style.left = '50%'; fill.style.background = 'linear-gradient(180deg,#3EA8FF,#A8E6FF)'; }
+    pulse.style.opacity = p > 0.001 ? 1 : 0;
+    [this.dot0, this.dot1, this.dot2].forEach((d, i) => {
+      const el = d.current; if (!el) return;
+      const on = p >= i * 0.5 - 0.01 && p > 0.001;
+      el.style.borderColor = on ? '#3EA8FF' : 'rgba(255,255,255,0.12)';
+      el.style.color = on ? '#F5F7FA' : '#8A93A0';
+      el.style.boxShadow = on ? '0 0 24px rgba(62,168,255,0.35)' : 'none';
+    });
+  }
+
+  setupReveals() {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (this.reduced || !('IntersectionObserver' in window)) return;
+    els.forEach(el => {
+      const d = (+el.getAttribute('data-reveal') || 0) * 90;
+      el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+      el.style.transition = `opacity .9s cubic-bezier(.2,.7,.2,1) ${d}ms, transform .9s cubic-bezier(.2,.7,.2,1) ${d}ms`;
+    });
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      this.ioFired = true;
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1'; e.target.style.transform = 'none';
+      this.io.unobserve(e.target);
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => this.io.observe(el));
+    const vh = window.innerHeight;
+    requestAnimationFrame(() => els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.style.opacity = '1'; el.style.transform = 'none'; }
+    }));
+    this.ioFired = false;
+    setTimeout(() => {
+      els.forEach(el => {
+        const inHero = el.closest('section') && el.closest('section').querySelector('#hero-title');
+        const r = el.getBoundingClientRect();
+        if (el.style.opacity === '0' && (inHero || !this.ioFired || r.top < window.innerHeight)) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      });
+    }, 1800);
+  }
+
+  setupCount() {
+    const root = this.statsRef.current; if (!root || this.reduced) return;
+    const els = [...root.querySelectorAll('[data-count]')];
+    const fmt = (v, d) => v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+    els.forEach(el => el.textContent = fmt(0, +el.dataset.dec));
+    const o = new IntersectionObserver(es => {
+      if (!es[0].isIntersecting) return; o.disconnect();
+      const t0 = performance.now(), dur = 1600;
+      const step = now => {
+        const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        els.forEach(el => el.textContent = fmt(parseFloat(el.dataset.count) * e, +el.dataset.dec));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, { threshold: 0.4 });
+    o.observe(root);
+  }
+
+  startCarousel() {
+    clearInterval(this.cTimer);
+    if (this.reduced) return;
+    this.cTimer = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 3 })), 6500);
+  }
+
+  async initGlobe() {
+    const wrap = this.globeRef.current; if (!wrap) return;
+    const fail = () => this.setState({ webglFailed: true });
+    const tc = document.createElement('canvas');
+    if (!(tc.getContext('webgl2') || tc.getContext('webgl'))) return fail();
+    let THREE, OrbitControls;
+    try {
+      THREE = await import('https://esm.sh/three@0.160.0');
+      ({ OrbitControls } = await import('https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js'));
+    } catch (e) { console.warn('NEXO: could not load three.js', e && e.message); return fail(); }
+    this.T = THREE;
+    const R = 1, rad = Math.PI / 180;
+    const ll = (lat, lng, r) => { const p = (90 - lat) * rad, t = (lng + 180) * rad; return new THREE.Vector3(-r * Math.sin(p) * Math.cos(t), r * Math.cos(p), r * Math.sin(p) * Math.sin(t)); };
+
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); } catch (e) { return fail(); }
+    this.renderer = renderer;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
+    const cv = renderer.domElement;
+    const BLEED = 0.35, S = 1 + BLEED * 2;
+    cv.style.cssText = `position:absolute;left:${-BLEED * 100}%;top:${-BLEED * 100}%;width:${S * 100}%;height:${S * 100}%;display:block;pointer-events:none`;
+    wrap.style.cursor = 'grab'; wrap.style.borderRadius = '50%';
+    wrap.setAttribute('aria-label', 'Interactive 3D globe of the Nexo network');
+    wrap.setAttribute('role', 'img');
+    wrap.setAttribute('aria-describedby', 'globe-hint');
+    wrap.tabIndex = 0;
+    wrap.appendChild(cv);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(2 * Math.atan(Math.tan(19 * rad) * S) / rad, 1, 0.1, 100);
+    this.camHome = ll(-14, -52, 3.5);
+    camera.position.copy(this.camHome);
+    this.camera = camera;
+
+    scene.add(new THREE.Mesh(new THREE.SphereGeometry(R, 72, 72), new THREE.ShaderMaterial({
+      uniforms: { uBase: { value: new THREE.Color('#0A0F16') }, uRim: { value: new THREE.Color('#3EA8FF') } },
+      vertexShader: 'varying vec3 vN; varying vec3 vV; void main(){ vec4 mv = modelViewMatrix*vec4(position,1.0); vN = normalize(normalMatrix*normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix*mv; }',
+      fragmentShader: 'uniform vec3 uBase; uniform vec3 uRim; varying vec3 vN; varying vec3 vV; void main(){ float f = pow(1.0 - max(dot(vN,vV),0.0), 3.0); gl_FragColor = vec4(uBase + uRim*f*0.22, 1.0); }'
+    })));
+    const globeMesh = scene.children[0];
+
+    const mask = await new Promise(res => {
+      const img = new Image(); img.crossOrigin = 'anonymous';
+      const to = setTimeout(() => res(null), 6000);
+      img.onload = () => { clearTimeout(to); try {
+        const c = document.createElement('canvas'); c.width = 720; c.height = 360;
+        const x = c.getContext('2d'); x.drawImage(img, 0, 0, 720, 360);
+        res(x.getImageData(0, 0, 720, 360).data);
+      } catch (e) { res(null); } };
+      img.onerror = () => { clearTimeout(to); res(null); };
+      img.src = 'https://unpkg.com/three-globe@2.31.0/example/img/earth-water.png';
+    });
+    const M = mask ? 26000 : 2500, ga = Math.PI * (3 - Math.sqrt(5)), cand = [];
+    for (let i = 0; i < M; i++) {
+      const y = 1 - (i / (M - 1)) * 2, r = Math.sqrt(1 - y * y), th = ga * i;
+      const px = Math.cos(th) * r, pz = Math.sin(th) * r;
+      let land = 1;
+      if (mask) {
+        const lat = Math.asin(y) / rad; let lng = Math.atan2(pz, -px) / rad - 180; if (lng < -180) lng += 360;
+        const u = Math.min(719, Math.floor((lng + 180) / 360 * 720)), v = Math.min(359, Math.floor((90 - lat) / 180 * 360));
+        land = mask[(v * 720 + u) * 4] < 128 ? 1 : 0;
+      }
+      cand.push([px, y, pz, land]);
+    }
+    let landCount = cand.filter(c => c[3]).length;
+    if (mask && landCount > M * 0.5) cand.forEach(c => c[3] = 1 - c[3]);
+    const pts = cand.filter(c => c[3]);
+    const N = pts.length, pos = new Float32Array(N * 3), alpha = new Float32Array(N);
+    pts.forEach((c, i) => {
+      pos[i * 3] = c[0] * R * 1.003; pos[i * 3 + 1] = c[1] * R * 1.003; pos[i * 3 + 2] = c[2] * R * 1.003;
+      alpha[i] = 0.3 + Math.pow(Math.random(), 1.4) * 0.7;
+    });
+    const pg = new THREE.BufferGeometry();
+    pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    pg.setAttribute('aAlpha', new THREE.BufferAttribute(alpha, 1));
+    const pMat = new THREE.ShaderMaterial({
+      transparent: true, depthWrite: false,
+      uniforms: { uColor: { value: new THREE.Color('#A8E6FF') }, uSize: { value: mask ? 1.7 : 2.3 }, uPR: { value: renderer.getPixelRatio() } },
+      vertexShader: 'attribute float aAlpha; varying float vA; uniform float uSize; uniform float uPR; void main(){ vA = aAlpha; vec4 mv = modelViewMatrix*vec4(position,1.0); gl_PointSize = uSize*uPR*(3.0/-mv.z); gl_Position = projectionMatrix*mv; }',
+      fragmentShader: 'uniform vec3 uColor; varying float vA; void main(){ float d = length(gl_PointCoord-0.5); if(d>0.5) discard; gl_FragColor = vec4(uColor, smoothstep(0.5,0.1,d)*vA); }'
+    });
+    scene.add(new THREE.Points(pg, pMat));
+
+    const halo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.32, 96, 96), new THREE.ShaderMaterial({
+      side: THREE.BackSide, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+      uniforms: { uColor: { value: new THREE.Color('#3EA8FF') }, uR: { value: R }, uW: { value: R * 0.32 } },
+      vertexShader: 'varying vec3 vP; varying vec3 vC; void main(){ vec4 mv = modelViewMatrix*vec4(position,1.0); vP = mv.xyz; vC = (modelViewMatrix*vec4(0.0,0.0,0.0,1.0)).xyz; gl_Position = projectionMatrix*mv; }',
+      fragmentShader: 'uniform vec3 uColor; uniform float uR; uniform float uW; varying vec3 vP; varying vec3 vC; void main(){ float r = length(cross(normalize(vP), vC)); float i; if (r < uR) { float k = r/uR; i = pow(k, 10.0)*0.55; } else { float x = clamp((r-uR)/uW, 0.0, 1.0); i = 0.55*pow(1.0-x, 2.0)*exp(-3.0*x); } gl_FragColor = vec4(uColor*i, i); }'
+    }));
+    halo.renderOrder = 5;
+    scene.add(halo);
+
+    const gc = document.createElement('canvas'); gc.width = gc.height = 64;
+    const g2 = gc.getContext('2d'), grd = g2.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grd.addColorStop(0, 'rgba(255,255,255,1)'); grd.addColorStop(0.25, 'rgba(255,255,255,0.55)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
+    g2.fillStyle = grd; g2.fillRect(0, 0, 64, 64);
+    const glowTex = new THREE.CanvasTexture(gc);
+    const spr = (color, s, op = 1) => { const m = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color, transparent: true, opacity: op, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending })); m.scale.setScalar(s); m.renderOrder = 10; m.userData.op = op; return m; };
+    const occluded = (P, C) => { const D = P.clone().sub(C), L = D.length(); D.divideScalar(L); const b = C.dot(D), c = C.lengthSq() - 0.985 * 0.985, disc = b * b - c; if (disc < 0) return false; const t0 = -b - Math.sqrt(disc); return t0 > 0 && t0 < L; };
+    const sstep = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+    const cities = [
+      ['Washington D.C.', 38.9, -77.04, '0.5', 598], ['Mexico City', 19.43, -99.13, '0.8', 356], ['Brasília', -15.79, -47.88, '0.6', 284],
+      ['Buenos Aires', -34.6, -58.38, '0.7', 312], ['London', 51.51, -0.13, '0.5', 587], ['Moscow', 55.76, 37.62, '0.6', 401],
+      ['Cairo', 30.04, 31.24, '0.8', 263], ['Nairobi', -1.29, 36.82, '0.9', 176], ['New Delhi', 28.61, 77.21, '0.7', 445],
+      ['Beijing', 39.9, 116.4, '0.6', 521], ['Tokyo', 35.68, 139.69, '0.5', 533], ['Canberra', -35.28, 149.13, '0.7', 198]
+    ].map(([name, lat, lng, ms, nodes], i) => {
+      const p = ll(lat, lng, R * 1.008);
+      const core = new THREE.Mesh(new THREE.SphereGeometry(0.013, 16, 16), new THREE.MeshBasicMaterial({ color: '#F5F7FA' }));
+      core.position.copy(p); scene.add(core);
+      const glow = spr('#3EA8FF', 0.14); glow.position.copy(p); scene.add(glow);
+      const hit = new THREE.Mesh(new THREE.SphereGeometry(0.055, 8, 8), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+      hit.position.copy(p); scene.add(hit);
+      const c = { name, ms, nodes, pos: p, glow, i }; hit.userData.city = c; c.hit = hit; return c;
+    });
+    this.cities = cities;
+
+    const pairs = [[0, 1], [0, 4], [1, 2], [2, 3], [2, 4], [3, 7], [4, 5], [4, 6], [6, 7], [5, 8], [6, 8], [8, 9], [9, 10], [10, 11], [8, 11], [5, 9]];
+    const lineMat = new THREE.LineBasicMaterial({ color: '#3EA8FF', transparent: true, opacity: 0.4, depthWrite: false, blending: THREE.AdditiveBlending });
+    this.arcs = pairs.map(([a, b], k) => {
+      const A = cities[a].pos, B = cities[b].pos, d = A.distanceTo(B);
+      const M = A.clone().add(B).multiplyScalar(0.5).normalize().multiplyScalar(R + d * 0.4);
+      const curve = new THREE.QuadraticBezierCurve3(A, M, B);
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(80)), lineMat));
+      const trail = [0, 1, 2, 3, 4].map(j => { const s = spr(j === 0 ? '#F5F7FA' : '#A8E6FF', 0.07 - j * 0.009, 1 - j * 0.18); s.visible = false; scene.add(s); return s; });
+      return { curve, trail, cycle: 2.4 + (k % 4) * 0.5, off: k * 0.61 };
+    });
+
+    const controls = new OrbitControls(camera, wrap);
+    Object.assign(controls, { enableDamping: true, dampingFactor: 0.06, enablePan: false, enableZoom: false, minDistance: 1.8, maxDistance: 5, rotateSpeed: 0.55, zoomSpeed: 0.6 });
+    controls.autoRotate = this.autoOn();
+    controls.autoRotateSpeed = this.props.rotateSpeed ?? 0.5;
+    wrap.style.touchAction = 'pan-y';
+    this.controls = controls;
+    controls.addEventListener('start', () => { this.pauseAuto(); wrap.style.cursor = 'grabbing'; });
+    controls.addEventListener('end', () => { this.scheduleResume(); wrap.style.cursor = 'grab'; });
+
+    const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+    const targets = [globeMesh, ...cities.map(c => c.hit)];
+    const pick = e => {
+      const r = cv.getBoundingClientRect();
+      ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      ray.setFromCamera(ndc, camera);
+      const hit = ray.intersectObjects(targets, false)[0];
+      return hit && hit.object.userData.city || null;
+    };
+    wrap.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse' || e.buttons) return;
+      this.hoverCity = pick(e);
+      wrap.style.cursor = this.hoverCity ? 'pointer' : 'grab';
+    });
+    wrap.addEventListener('pointerleave', () => { this.hoverCity = null; });
+    wrap.addEventListener('pointerdown', e => { this.downAt = [e.clientX, e.clientY]; });
+    wrap.addEventListener('pointerup', e => {
+      if (!this.downAt) return;
+      const moved = Math.hypot(e.clientX - this.downAt[0], e.clientY - this.downAt[1]);
+      if (moved < 8) this.tapCity = pick(e);
+    });
+    wrap.addEventListener('keydown', e => this.onGlobeKey(e));
+
+    const resize = () => {
+      const w = wrap.clientWidth, h = wrap.clientHeight || w;
+      if (!w || !h) return;
+      renderer.setSize(w * S, h * S, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+      this.gw = w; this.gh = h;
+    };
+    resize();
+    this.ro = new ResizeObserver(resize); this.ro.observe(wrap);
+
+    const clock = new THREE.Clock(), tmpN = new THREE.Vector3(), tmpC = new THREE.Vector3();
+    const tt = this.tooltipRef.current;
+    const loop = () => {
+      if (!this.running) { this.gRaf = 0; return; }
+      this.gRaf = requestAnimationFrame(loop);
+      if (wrap.clientWidth !== this.gw || wrap.clientHeight !== this.gh) resize();
+      const t = clock.getElapsedTime();
+      controls.autoRotateSpeed = this.props.rotateSpeed ?? 0.5;
+      if (!this.reduced && (this.props.autoRotate ?? true) === false) controls.autoRotate = false;
+      controls.update();
+      if (this.animTo) this.stepAnim();
+      const pulsesOn = !this.reduced && (this.props.pulses ?? true);
+      this.arcs.forEach(a => {
+        const ph = ((t + a.off) % a.cycle) / (a.cycle * 0.72);
+        a.trail.forEach((s, j) => {
+          const q = ph - j * 0.028;
+          s.visible = pulsesOn && ph <= 1 && q >= 0;
+          if (s.visible) { s.position.copy(a.curve.getPoint(Math.min(1, q))); if (occluded(s.position, camera.position)) s.visible = false; }
+        });
+      });
+      const active = this.hoverCity || this.tapCity;
+      cities.forEach(c => {
+        const base = c === active ? 0.24 : 0.14;
+        c.glow.scale.setScalar(this.reduced ? base : base * (1 + 0.14 * Math.sin(t * 2 + c.i)));
+        tmpN.copy(camera.position).sub(c.pos).normalize();
+        c.glow.material.opacity = sstep(-0.02, 0.22, tmpN.dot(c.pos.clone().normalize()));
+      });
+      if (tt) {
+        tmpC.copy(camera.position).normalize();
+        if (active && tmpN.copy(active.pos).normalize().dot(tmpC) > 0.2) {
+          const v = active.pos.clone().project(camera);
+          const x = ((v.x + 1) / 2 * S - BLEED) * this.gw, y = ((1 - v.y) / 2 * S - BLEED) * this.gh;
+          if (this.ttFor !== active) {
+            this.ttFor = active;
+            this.ttNameRef.current.textContent = active.name;
+            this.ttMetaRef.current.textContent = ` · ${active.ms} ms · ${active.nodes} active nodes`;
+          }
+          tt.style.transform = `translate(${x}px,${y}px) translate(-50%, calc(-100% - 16px))`;
+          tt.style.opacity = '1';
+        } else if (tt.style.opacity !== '0') { tt.style.opacity = '0'; if (active === this.tapCity) this.tapCity = null; this.ttFor = null; }
+      }
+      renderer.render(scene, camera);
+    };
+    this.globeResize = resize;
+    this.startLoop = () => { resize(); if (!this.running) { this.running = true; clock.getDelta(); if (!this.gRaf) this.gRaf = requestAnimationFrame(loop); } };
+    this.gio = new IntersectionObserver(es => { if (es[0].isIntersecting) this.startLoop(); else this.running = false; }, { rootMargin: '100px' });
+    this.gio.observe(wrap);
+    this.setState({ globeReady: true });
+  }
+
+  autoOn() { return !this.reduced && (this.props.autoRotate ?? true); }
+  pauseAuto() { if (this.controls) this.controls.autoRotate = false; clearTimeout(this.resumeT); }
+  scheduleResume() { clearTimeout(this.resumeT); this.resumeT = setTimeout(() => { if (this.controls) this.controls.autoRotate = this.autoOn(); }, 3000); }
+
+  onGlobeKey(e) {
+    const T = this.T, cam = this.camera, c = this.controls; if (!T || !cam) return;
+    const s = new T.Spherical().setFromVector3(cam.position), step = 0.14;
+    let handled = true;
+    if (e.key === 'ArrowLeft') s.theta -= step;
+    else if (e.key === 'ArrowRight') s.theta += step;
+    else if (e.key === 'ArrowUp') s.phi = Math.max(0.25, s.phi - step);
+    else if (e.key === 'ArrowDown') s.phi = Math.min(Math.PI - 0.25, s.phi + step);
+    else handled = false;
+    if (!handled) return;
+    e.preventDefault();
+    this.pauseAuto(); this.animTo = null;
+    cam.position.setFromSpherical(s); cam.lookAt(0, 0, 0); c.update();
+    this.scheduleResume();
+  }
+
+  recenter = () => {
+    if (!this.camera) return;
+    this.pauseAuto(); this.tapCity = null;
+    if (this.reduced) { this.camera.position.copy(this.camHome); this.controls.update(); this.scheduleResume(); return; }
+    this.animTo = { from: this.camera.position.clone(), t0: performance.now(), dur: 1100 };
+    this.startLoop && this.startLoop();
+  };
+  stepAnim() {
+    const a = this.animTo, k = Math.min(1, (performance.now() - a.t0) / a.dur);
+    const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    const fl = a.from.length(), tl = this.camHome.length();
+    const p = a.from.clone().normalize().lerp(this.camHome.clone().normalize(), e);
+    if (p.lengthSq() < 1e-4) p.set(0, 1, 0);
+    this.camera.position.copy(p.setLength(fl + (tl - fl) * e));
+    this.camera.lookAt(0, 0, 0);
+    if (k >= 1) { this.animTo = null; this.scheduleResume(); }
+  }
+
+  renderVals() {
+    const { slide, hoverFeat } = this.state;
+    const wide = this.isWide();
+    const dot = i => ({ w: slide === i ? '26px' : '6px', bg: slide === i ? '#F5F7FA' : 'rgba(255,255,255,0.22)', cur: slide === i ? 'true' : 'false' });
+    const arrow = i => ({ o: hoverFeat === i ? 1 : 0, t: hoverFeat === i ? 'translateX(0)' : 'translateX(-8px)' });
+    return {
+      starsRef: this.starsRef, videoWrapRef: this.videoWrapRef, videoRef: this.videoRef, statsRef: this.statsRef,
+      globeRef: this.globeRef, tooltipRef: this.tooltipRef, ttNameRef: this.ttNameRef, ttMetaRef: this.ttMetaRef,
+      stepsRef: this.stepsRef, fillRef: this.fillRef, pulseRef: this.pulseRef, dot0: this.dot0, dot1: this.dot1, dot2: this.dot2,
+      wide,
+      stepsCols: wide ? 'repeat(3,minmax(0,1fr))' : '1fr', stepsGap: wide ? '32px' : '48px',
+      stepDir: wide ? 'column' : 'row', stepAlign: wide ? 'center' : 'flex-start', stepText: wide ? 'center' : 'left',
+      ln: wide ? { left: '16.666%', right: '16.666%', bottom: 'auto', w: 'auto', h: '1px' } : { left: '24px', right: 'auto', bottom: '48px', w: '1px', h: 'auto' },
+      fe0: this.fe[0], fe1: this.fe[1], fe2: this.fe[2], fl: this.fl,
+      a0: arrow(0), a1: arrow(1), a2: arrow(2),
+      trackTransform: `translateX(-${slide * 100}%)`,
+      d0: dot(0), d1: dot(1), d2: dot(2), go0: this.go[0], go1: this.go[1], go2: this.go[2],
+      pauseCarousel: () => clearInterval(this.cTimer), resumeCarousel: () => this.startCarousel(),
+      touchStart: e => { this.tx = e.touches[0].clientX; },
+      touchEnd: e => {
+        const dx = e.changedTouches[0].clientX - (this.tx ?? 0);
+        if (Math.abs(dx) > 40) { this.setState(s => ({ slide: (s.slide + (dx < 0 ? 1 : 2)) % 3 })); this.startCarousel(); }
+      },
+      recenter: this.recenter,
+      webglFailed: this.state.webglFailed, globeLoading: !this.state.globeReady && !this.state.webglFailed,
+      submitted: this.state.submitted, notSubmitted: !this.state.submitted,
+      onSubmit: e => { e.preventDefault(); this.setState({ submitted: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
